@@ -1,13 +1,20 @@
 <?php
   include 'header.php';
 
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  
   if ((isset($_POST['name'])) && (isset($_POST['code']))) {
     // Hier code om een row in te vullen
     $name = $_POST['name'];
     $code = $_POST['code'];
     mysqli_query($con,"INSERT INTO results (name,code) VALUES ('$name','$code')");
     echo "Opslaan gelukt!";
+  } 
+  else { 
+    echo "niet volledig ingevuld";
   }
+}
 ?>
 <div class="container">
   <div class="page-header">
@@ -25,9 +32,8 @@
     </div>
 
     <button type="submit" class="btn btn-default">Verstuur</button>
+
   </form>
-
-
 
 </div>
 <?php
